@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout.form"
+	controllerName="ZORDUPLOAD.controller.Home">
+	<Dialog contentWidth="300px" title="{i18n>UploadFiletitle}" contentHeight="100px">
+		<l:SimpleForm editable="true" title="">
+			<l:content>
+				<Label text="{i18n>UploadLableText}" tooltip="{i18n>UploadFileNameToolTip}"></Label>
+				<VBox>
+					<u:FileUploader id="idfileUploaderer" width="100%" sameFilenameAllowed="false" placeholder="{i18n>UploadFilePlaceHolder}"
+						typeMissmatch="handleTypeMissmatch" fileType="CSV" maximumFileSize="1" sendXHR="true" fileSizeExceed="fileSizepopup"
+						uploadComplete="uploadComplete1" style="Emphasized"></u:FileUploader>
+				</VBox>
+			</l:content>
+		</l:SimpleForm>
+		<beginButton>
+			<Button text="{i18n>UploadButtonText}" press="onUploadPressed" type="Emphasized"/>
+		</beginButton>
+		<endButton>
+			<Button press="UploadCancel" text="{i18n>UploadCancelButtonText}"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

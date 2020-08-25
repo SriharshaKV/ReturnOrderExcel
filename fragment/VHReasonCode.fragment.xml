@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Reason Code" noDataText="No Reason Codes found" items="{ReasonCode>/d/results}" class="sapUiPopupWithPadding"
+		search="vhReasonCodeSearch" liveChange="vhReasonCodeSearch" confirm="vhReasonCodeConfrim">
+		<StandardListItem title="{ReasonCode>Zzretreason}" description="{ReasonCode>Bezei}"></StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>

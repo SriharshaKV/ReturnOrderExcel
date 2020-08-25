@@ -1,0 +1,212 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:t="sap.ui.table" controllerName="ZORDUPLOAD.controller.Home" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}" showHeader="false" xmlns:t="sap.ui.table">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:Form id="id_inputForm" editable="true">
+					<f:toolbar>
+						<OverflowToolbar>
+							<Title  text="Header Data"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://refresh" tooltip="Refresh App" press="onRefresh"/>
+						</OverflowToolbar>
+					</f:toolbar>
+					<!--<Button text="Refresh"/>-->
+					<f:layout>
+						<f:ResponsiveGridLayout labelSpanXL="1" labelSpanL="1" labelSpanM="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0"
+							emptySpanS="0" columnsXL="4" columnsL="4" columnsM="2" singleContainerFullSize="false"/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement>
+									<label text="Document Type:" textAlign="Right" required="true" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_docType" showValueHelp="true" valueHelpRequest="onVHSalesDocType" value="{/Auart}" liveChange="vhDocTypeSearchFrmView"></Input>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<label text="Sales Org:" textAlign="Right" required="true" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_salOrg" showValueHelp="true" valueHelpRequest="onVHSalesOrg" value="{/Vkorg}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<label text="Distribution Channel:" textAlign="Right" required="true" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_disChnl" showValueHelp="true" valueHelpRequest="onVHDistibutionChnl" value="{/Vtweg}"/>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement >
+									<label text="Division:" textAlign="Right" required="true" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_division" showValueHelp="true" valueHelpRequest="onVHDivision" value="{/Spart}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<label text="Sold-To-Party:" required="true" textAlign="Right" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_sol2Party" placeholder="Enter Sold To Party..." showSuggestion="true" showTableSuggestionValueHelp="true"
+											suggestionRows="{Customer>/d/results}" showValueHelp="true" valueHelpRequest="onVHSol2Party" value="{/Kunnr}" maxSuggestionWidth="70%">
+											<suggestionColumns>
+												<Column hAlign="Begin">
+													<Label text="Customer"/>
+												</Column>
+												<Column hAlign="Center">
+													<Label text="Name"/>
+												</Column>
+												<Column hAlign="Center">
+													<Label text="City"/>
+												</Column>
+												<Column hAlign="End">
+													<Label text="Country"/>
+												</Column>
+												<Column hAlign="End">
+													<Label text="Sort"/>
+												</Column>
+											</suggestionColumns>
+											<suggestionRows>
+												<ColumnListItem>
+													<cells>
+														<Label text="{Customer>Kunnr}"/>
+														<Label text="{Customer>Mcod1}"/>
+														<Label text="{Customer>Mcod3}"/>
+														<Label text="{Customer>Land1}"/>
+														<Label text="{Customer>Sortl}"/>
+													</cells>
+												</ColumnListItem>
+											</suggestionRows>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<label text="Ship-To-Party:" textAlign="Right" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_shp2Party" placeholder="Enter Ship To Party..." showValueHelp="true" valueHelpRequest="onVHShp2Party" value="{/Kunwe}"
+											showSuggestion="true" showTableSuggestionValueHelp="true" suggestionRows="{Customer2>/d/results}" maxSuggestionWidth="70%">
+											<suggestionColumns>
+												<Column hAlign="Begin">
+													<Label text="Customer"/>
+												</Column>
+												<Column hAlign="Center">
+													<Label text="Name"/>
+												</Column>
+												<Column hAlign="Center">
+													<Label text="City"/>
+												</Column>
+												<Column hAlign="End">
+													<Label text="Country"/>
+												</Column>
+												<Column hAlign="End">
+													<Label text="Sort"/>
+												</Column>
+											</suggestionColumns>
+											<suggestionRows>
+												<ColumnListItem>
+													<cells>
+														<Label text="{Customer2>Kunnr}"/>
+														<Label text="{Customer2>Mcod1}"/>
+														<Label text="{Customer2>Mcod3}"/>
+														<Label text="{Customer2>Land1}"/>
+														<Label text="{Customer2>Sortl}"/>
+													</cells>
+												</ColumnListItem>
+											</suggestionRows>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement>
+									<label text="Reason Code:" textAlign="Right" required="true" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Input id="id_rsnCode" showValueHelp="true" valueHelpRequest="onVHReasonCode" value="{/Zzretreason}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement >
+									<label text="Sub Reason:" textAlign="Right" class="sapUiTinyMarginTop" required="true"/>
+									<f:fields>
+										<Input id="id_subReason" showValueHelp="true" valueHelpRequest="onVHSubReason" value="{/Zzsubreason}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement >
+									<label text="Error Location:" textAlign="Right" class="sapUiTinyMarginTop" required="true"/>
+									<f:fields>
+										<Input id="id_errLocation" showValueHelp="true" valueHelpRequest="onVHErrLocation" value="{/Zzerrloc}"/>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement >
+									<label text="Cust Reference:" textAlign="Right" class="sapUiTinyMarginTop" required="true"/>
+									<f:fields>
+										<Input id="id_custReference" value="{/Bstkd}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement>
+									<label text="Sales Order:" textAlign="Right" class="sapUiTinyMarginTop"/>
+									<f:fields>
+										<Link id="id_SO" emphasized="true" press="onSOPress"/>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</VBox>
+			<t:Table id="id_itemTable" rows="{/ItemSet}" class="sapUiSmallMargin">
+				<t:extension>
+					<OverflowToolbar>
+						<Title id="id_tableTitle"/>
+						<ToolbarSpacer/>
+						<Button text="Upload and Edit" tooltip="Click to Select file" press="onUpload"/>
+						<Button icon="sap-icon://add" tooltip="Add New Row" press="onAddRow"/>
+						<Button icon="sap-icon://sys-minus" tooltip="Delete Selected Row" press="onDeleteRow"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+					<t:Column>
+						<Label text="Material" design="Bold"/>
+						<t:template>
+							<Input value="{Matnr}" showValueHelp="true" valueHelpRequest="onVHMaterial" maxSuggestionWidth="35%"></Input>
+							<!--showSuggestion="false"-->
+							<!--	suggestionItems="{MaterialJ>/d/results}">-->
+							<!--<suggestionItems>-->
+							<!--	<core:ListItem text="{MaterialJ>Matnr}" additionalText="{MaterialJ>Maktg}"/>-->
+							<!--</suggestionItems>-->
+							<!--</Input>-->
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Order Quantity" design="Bold"/>
+						<t:template>
+							<Input value="{path:'Kwmeng',type:'sap.ui.model.type.String'}" required="true" liveChange="onQuanUpdate"/>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Cust Reference " design="Bold"/>
+						<t:template>
+							<Input value="{BstkdE}"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<Button id="messagePopoverBtn" icon="sap-icon://message-error" type="Reject" press="handleMessagePopoverPress"
+					visible="{=!!${messages>/}.length}"/>
+				<ToolbarSpacer/>
+				<Button text="Create Order" press="onInitiateCreate" type="Emphasized"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

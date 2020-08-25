@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Error Locations" noDataText="No Error Locations found" items="{ErrorLoc>/d/results}" class="sapUiPopupWithPadding"
+		search="vhErrLocationSearch" liveChange="vhErrLocationSearch" confirm="vhErrLocationConfrim">
+		<StandardListItem title="{ErrorLoc>Zzerrloc}" description="{ErrorLoc>Bezei}"></StandardListItem>
+	</SelectDialog>
+</core:FragmentDefinition>
